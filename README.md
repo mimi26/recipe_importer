@@ -1,6 +1,6 @@
 ## Instructions
 
-Clone this repo. `cd` into the project directory. Install dependencies with `npm install` or `yarn`. Navigate to ```http://localhost:8080/recipe?url=<url>```
+Clone this repo. `cd` into the project directory. Install dependencies with `npm install` or `yarn`. Start the server by running `yarn run dev`. Navigate to: ```http://localhost:8080/recipe?url=<url>```
 
 ## Technologies Used
 - Express

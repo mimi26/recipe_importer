@@ -10,19 +10,22 @@ const getRecipeName = async url => {
         let steps = [];
         let ingredientNodeList;
         let stepsNodeList;
-        // grab eatthelove.com ingredients
+        // grab eatthelove.com ingredients and steps
         if (document.querySelectorAll('span[itemprop="ingredients"]').length !== 0) {
             ingredientNodeList = document.querySelectorAll('span[itemprop="ingredients"]');
+            stepsNodeList = document.querySelector('div[itemscope]').children;
+            steps = Array.prototype.slice.call(stepsNodeList).slice(6, 10).map(node => node.textContent);
         // grab laurainthekitchen.com ingredients and steps
         } else if (document.querySelector('#recipe-ingredients')) {
             ingredientNodeList = document.querySelectorAll('#recipe-ingredients li');
             steps = document.querySelector('#recipe-process ul').textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim().split(/[1-9]\)/);
             // remove empty string at first index
             steps.shift();
-            // steps = document.querySelector('#recipe-process ul').textContent.split(/[1-9]\)/);
-        // grab cooking.nytimes.com ingredients
+        // grab cooking.nytimes.com ingredients and steps
         } else if (document.querySelectorAll('li[itemprop="recipeIngredient"]').length !== 0) {
             ingredientNodeList = document.querySelectorAll('li[itemprop="recipeIngredient"]');
+            stepsNodeList = document.querySelectorAll('ol[itemprop="recipeInstructions"] li');
+            steps = Array.prototype.slice.call(stepsNodeList).map(node => node.textContent);
         // grab maangchi.com ingredients and steps
         } else {
             const recipeDiv = document.querySelector('.entry.clearfix').children;

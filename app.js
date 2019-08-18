@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { getRecipeName } = require('./middleware/fetch_recipes');
 
-const PORT = 3001;
+const PORT = 8080;
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);

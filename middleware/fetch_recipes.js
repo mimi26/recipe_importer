@@ -41,4 +41,5 @@ const getRecipeName = async url => {
     await browser.close();
     return recipesData;
 }
+
 module.exports = { getRecipeName };

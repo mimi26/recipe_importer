@@ -17,6 +17,9 @@ const getRecipeName = async url => {
         // grab cooking.nytimes.com ingredients
         } else if (document.querySelectorAll('li[itemprop="recipeIngredient"]').length !== 0) {
             ingredientNodeList = document.querySelectorAll('li[itemprop="recipeIngredient"]');
+        // grab maangchi.com ingredients
+        } else {
+            ingredientNodeList = document.querySelectorAll('h4 + ul li');
         }
         for (let i = 0; i < ingredientNodeList.length; i++) {
             ingredients.push(ingredientNodeList[i].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim());

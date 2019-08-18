@@ -8,7 +8,7 @@ Clone this repo. `cd` into the project directory. Install dependencies with `npm
 
 ## Strategy
 
-I used Express with Node to create an endpoint `/recipe` which accepts a recipe url as a query parameter and returns the recipe data as a `JSON` object. 
+I used Express with Node to create an endpoint `/recipe` which accepts a recipe url as a query parameter and returns the recipe data as a `JSON` object. Puppeteer is used in a middleware function to allow for querying the DOM in a headless browser.
 
 ## Discussion/Challenges
 

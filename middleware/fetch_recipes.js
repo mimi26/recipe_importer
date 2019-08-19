@@ -39,7 +39,7 @@ const getRecipeName = async url => {
             const nameMatch = /(?![0-9])(?!cup|gallon|pint|quart|teaspoon|tablespoon|Tbsp|Slices|ounce|pounds|g|kg|mg|oz|lb|st|t\b)\b[a-zA-Z\-]+/g;
             const unitMatch = /(cup|gallon|pint|quart|teaspoon|tablespoon|ounce|Tbsp|Slices|pounds)/g;
             const ingredientName = ingredientNodeList[i].textContent.match(nameMatch);
-            const quantityList = ingredientNodeList[i].textContent.match(/(([0-9\/\.\s])+)/g);
+            const quantityList = ingredientNodeList[i].textContent.match(/(([0-9½¼¾\/\.\s])+)/g);
             const unitsList = ingredientNodeList[i].textContent.match(unitMatch);
             if (ingredientName) ingredientObj.name = ingredientName.join(' ');
             if (unitsList) ingredientObj.unit = unitsList[0];

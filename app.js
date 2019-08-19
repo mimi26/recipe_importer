@@ -10,6 +10,7 @@ app.listen(PORT, () => {
 
 app.get('/recipe', async (req, res) => {
     const data = await getRecipeName(req.query.url);
-    console.log('this is data:', data);
     res.send(data);
-})
+});
+
+app.use((err, req, res, next) => console.error(err.stack));

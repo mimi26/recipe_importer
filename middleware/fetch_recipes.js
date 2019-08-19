@@ -33,8 +33,18 @@ const getRecipeName = async url => {
             stepsNodeList = Array.prototype.slice.call(recipeDiv).slice(12, 18);
             steps = stepsNodeList.map(node => node.textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim());
         }
+        // create individual ingredient objects and ingredients array
         for (let i = 0; i < ingredientNodeList.length; i++) {
-            ingredients.push(ingredientNodeList[i].textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim());
+            const ingredientObj = {};
+            const nameMatch = /(?![0-9])(?!cup|gallon|pint|quart|teaspoon|tablespoon|Tbsp|Slices|ounce|pounds|g|kg|mg|oz|lb|st|t\b)\b[a-zA-Z\-]+/g;
+            const unitMatch = /(cup|gallon|pint|quart|teaspoon|tablespoon|ounce|Tbsp|Slices|pounds)/g;
+            const ingredientName = ingredientNodeList[i].textContent.match(nameMatch);
+            const quantityList = ingredientNodeList[i].textContent.match(/(([0-9\/\.\s])+)/g);
+            const unitsList = ingredientNodeList[i].textContent.match(unitMatch);
+            if (ingredientName) ingredientObj.name = ingredientName.join(' ');
+            if (unitsList) ingredientObj.unit = unitsList[0];
+            if (quantityList) ingredientObj.quantity = quantityList[0];
+            ingredients.push(ingredientObj);
         }
         return { name, ingredients, steps };
     });

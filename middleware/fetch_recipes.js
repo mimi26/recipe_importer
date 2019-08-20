@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const getRecipeName = async url => {
+const getRecipeData = async url => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url);
@@ -52,4 +52,4 @@ const getRecipeName = async url => {
     return recipesData;
 }
 
-module.exports = { getRecipeName };
+module.exports = { getRecipeData };

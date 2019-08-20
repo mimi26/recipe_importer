@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { getRecipeName } = require('./middleware/fetch_recipes');
+const { getRecipeData } = require('./middleware/fetch_recipes');
 
 const PORT = 8080;
 
@@ -9,7 +9,7 @@ app.listen(PORT, () => {
 });
 
 app.get('/recipe', async (req, res) => {
-    const data = await getRecipeName(req.query.url);
+    const data = await getRecipeData(req.query.url);
     res.send(data);
 });
 
